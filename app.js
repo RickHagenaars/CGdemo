@@ -9,11 +9,11 @@ require('console-stamp')(console, '[HH:MM:ss.l]');
 
 // Small configuration object
 var config 		= {
-	"order": 	[ "soilmoisture", "airtemperature", "lightintensity" ],
+	"order": 	[ "moisture", "temperature", "light" ],
 	"calculation": {
-		"soilmoisture"		: "value * 0.1",
-		"airtemperature" 	: "value * 2.5",
-		"lightintensity"	: "value * 0.1"
+		"moisture"		: "value * 0.1",
+		"temperature" 	: "value * 2.5",
+		"light"			: "value * 0.1"
 	},
 	"limits" 	: {
 		"upper": 	100,
@@ -71,7 +71,7 @@ var zigbeeToMQTT 	= function(zigbeePort)
 	console.log("Start listening to zigbee module on port", zigbeePort);
 	var comPort			= new SerialPort(zigbeePort, { parser: SerialPort.parsers.readline('\n') });
 	var parser 			= math.parser();
-	var client  		= mqtt.connect('mqtt://test.mosquitto.org');
+	var client  		= mqtt.connect('mqtt://broker.hivemq.com');
 
 	comPort.on('error', function(err)
 	{
