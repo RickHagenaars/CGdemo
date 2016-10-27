@@ -1,0 +1,19 @@
+{
+  "name": "connected-garden-demo",
+  "version": "1.0.0",
+  "description": "Demo for Connected Garden, sending zigbee values to MQTT server",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "console-stamp": "^0.2.4",
+    "lodash": "^4.16.4",
+    "mathjs": "^3.6.0",
+    "mqtt": "^2.0.1",
+    "prompt": "^1.0.0",
+    "serialport": "^4.0.3"
+  }
+}
