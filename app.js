@@ -71,7 +71,7 @@ var zigbeeToMQTT 	= function(zigbeePort)
 	console.log("Start listening to zigbee module on port", zigbeePort);
 	var comPort			= new SerialPort(zigbeePort, { parser: SerialPort.parsers.readline('\n') });
 	var parser 			= math.parser();
-	var client  		= mqtt.connect('mqtt://broker.hivemq.com');
+	var client  		= mqtt.connect('mqtt://37.97.225.254');
 
 	comPort.on('error', function(err)
 	{
