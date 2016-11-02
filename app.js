@@ -9,11 +9,11 @@ require('console-stamp')(console, '[HH:MM:ss.l]');
 
 // Small configuration object
 var config 		= {
-	"order": 	[ "moisture", "temperature", "light" ],
+	"order": 	[ "moistureCgTest", "temperatureCgTest", "lightCgTest" ],
 	"calculation": {
-		"moisture"		: "value * 0.1",
-		"temperature" 	: "value * 2.5",
-		"light"			: "value * 0.1"
+		"moistureCgTest"		: "value * 0.1",
+		"temperatureCgTest" 	: "value * 2.5",
+		"lightCgTest"			: "value * 0.1"
 	},
 	"limits" 	: {
 		"upper": 	100,
