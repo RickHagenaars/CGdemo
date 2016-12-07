@@ -21,6 +21,18 @@ var config 		= {
 	}
 }
 
+var config2 	= {
+	"order": 	[ "rainCgTest", "temperatureCgTest"],
+	"calculation": {
+		"rainCgTest"		: "value",
+		"temperatureCgTest" 	: "value * 2.5"
+	},
+	"limits" 	: {
+		"upper": 	100,
+		"lower": 	0
+	}
+}
+
 // Port selection at start of run
 SerialPort.list(function (err, ports) {
 	if(err)
@@ -101,6 +113,18 @@ var zigbeeToMQTT 	= function(zigbeePort)
 				var topicStructure	= [ satelliteId, type ];
 				client.publish(topicStructure.join('/'), _.toString(value));
 
+				console.log(topicStructure.join('/'), _.toNumber(splitted[(n+1)]), value + "%");
+			});
+		}
+		if(splitted.length == 3)
+		{
+			var satelliteId 		= splitted[0];
+			_.forEach(config2.order, function(type, n)
+			{
+				var value 			= Math.max(config2.limits.lower, Math.min(config2.limits.upper, Math.round(parser.eval(config2.calculation[type].replace("value", _.toNumber(splitted[(n+1)]))))));
+
+				var topicStructure	= [ satelliteId, type ];
+				client.publish(topicStructure.join('/'), _.toString(value));
 				console.log(topicStructure.join('/'), _.toNumber(splitted[(n+1)]), value + "%");
 			});
 		}
